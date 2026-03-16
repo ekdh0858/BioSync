@@ -198,6 +198,9 @@ test: add unit test for alert service
 feature/{기능명}
 fix/{버그명}
 refactor/{리팩토링}
+docs/{문서명}
+test/{테스트명}
+chore/{작업명}
 ```
 
 예시는 다음과 같다.
@@ -206,9 +209,20 @@ refactor/{리팩토링}
 feature/device-api
 fix/login-null-error
 refactor/service-structure
+docs/api-spec-update
+test/alert-service
+chore/dev-config
 ```
 
-`main` 브랜치는 항상 배포 가능한 상태를 유지한다.
+브랜치 운영 규칙은 다음과 같다.
+
+- `main` 브랜치는 항상 배포 가능한 상태를 유지한다.
+- `develop` 브랜치는 기본 개발 통합 브랜치로 사용한다.
+- 새 작업은 기본적으로 `develop` 에서 분기한다.
+- 작업 브랜치는 목적별로 나누고, 직접 `main` 에 머지하지 않는다.
+- 기본 머지 흐름은 `task branch -> develop -> main` 이다.
+
+자세한 운영 기준은 [branch-strategy.md](branch-strategy.md)를 따른다.
 
 ## 13. Testing Rules
 

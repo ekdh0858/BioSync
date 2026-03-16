@@ -1,0 +1,62 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: biosync-postgres
+    environment:
+      POSTGRES_DB: biosync
+      POSTGRES_USER: biosync
+      POSTGRES_PASSWORD: biosync
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U biosync -d biosync"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+
+  redis:
+    image: redis:7-alpine
+    container_name: biosync-redis
+    ports:
+      - "6379:6379"
+    command: ["redis-server", "--appendonly", "yes"]
+    volumes:
+      - redis-data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: biosync-app
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    environment:
+      SPRING_PROFILES_ACTIVE: docker
+      DB_URL: jdbc:postgresql://postgres:5432/biosync
+      DB_USERNAME: biosync
+      DB_PASSWORD: biosync
+      REDIS_HOST: redis
+      REDIS_PORT: 6379
+      JWT_SECRET: change-this-docker-secret-key-change-this-docker-secret-key
+      JWT_ACCESS_EXPIRATION: 3600
+      JWT_REFRESH_EXPIRATION: 1209600
+      ADMIN_EMAIL: admin@biosync.local
+      ADMIN_PASSWORD: Admin123!
+      ADMIN_NAME: Admin
+    ports:
+      - "8080:8080"
+    restart: unless-stopped
+
+volumes:
+  postgres-data:
+  redis-data:

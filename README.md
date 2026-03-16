@@ -13,6 +13,7 @@ BioSync는 웨어러블 기기에서 수집한 생체신호 데이터를 저장,
 | [analysis-rules.md](analysis-rules.md) | Summary 계산식과 Alert 생성 규칙 정의 |
 | [security-policy.md](security-policy.md) | JWT, 권한, 비밀번호, 관리자 계정 정책 정의 |
 | [operations.md](operations.md) | 환경 변수, 로깅, 보존 정책, 운영 체크리스트 정리 |
+| [branch-strategy.md](branch-strategy.md) | `main` / `develop` / 작업 브랜치 운영 전략 정의 |
 | [design-system.md](design-system.md) | UI 톤앤매너, 타이포그래피, 컬러, 컴포넌트 원칙 |
 | [wireframe.md](wireframe.md) | 주요 화면의 정보 구조와 텍스트 와이어프레임 |
 | [AGENTS.md](AGENTS.md) | AI 코딩 에이전트 작업 규칙과 체크리스트 |
@@ -47,6 +48,7 @@ BioSync는 웨어러블 기기에서 수집한 생체신호 데이터를 저장,
 5. [analysis-rules.md](analysis-rules.md)
 6. [security-policy.md](security-policy.md)
 7. [operations.md](operations.md)
-8. [design-system.md](design-system.md)
-9. [wireframe.md](wireframe.md)
-10. [AGENTS.md](AGENTS.md)
+8. [branch-strategy.md](branch-strategy.md)
+9. [design-system.md](design-system.md)
+10. [wireframe.md](wireframe.md)
+11. [AGENTS.md](AGENTS.md)
