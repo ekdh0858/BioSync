@@ -1,0 +1,26 @@
+spring:
+  datasource:
+    url: jdbc:h2:mem:biosync;MODE=PostgreSQL;DATABASE_TO_LOWER=TRUE;DB_CLOSE_DELAY=-1
+    username: sa
+    password:
+  jpa:
+    hibernate:
+      ddl-auto: update
+  data:
+    redis:
+      host: localhost
+      port: 6379
+  h2:
+    console:
+      enabled: true
+
+jwt:
+  secret: change-this-local-secret-key-change-this-local-secret-key
+  access-expiration: 3600
+  refresh-expiration: 1209600
+
+app:
+  admin:
+    email: admin@biosync.local
+    password: Admin123!
+    name: Admin
